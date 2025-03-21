@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTFS Viewer</title>
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.14.30/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">GTFS Viewer</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">GTFS Selection</h3>
+                    </div>
+                    <div class="panel-body">
+                        <fieldset>
+                            <legend class="sr-only">GTFS Route Selection</legend>
+                            <div class="form-group">
+                                <label for="gtfs-select">Select GTFS Dataset:</label>
+                                <select id="gtfs-select" class="form-control">
+                                    <option value="">Select a dataset...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="route-select">Select Route:</label>
+                                <select id="route-select" class="form-control" disabled>
+                                    <option value="">Select a route...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="datetime-input">Date and Time:</label>
+                                <div class="input-group date" id="datetime-picker">
+                                    <input type="text" class="form-control" id="datetime-input" disabled>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <button id="view-route-btn" class="btn btn-primary btn-block" disabled
+                                aria-label="View selected route">View Route</button>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Upload GTFS</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form id="upload-form">
+                            <fieldset>
+                                <legend class="sr-only">GTFS File Upload</legend>
+                                <div class="form-group">
+                                    <label for="gtfs-file">GTFS Zip File:</label>
+                                    <input type="file" id="gtfs-file" accept=".zip">
+                                    <p class="help-block">Select a GTFS zip file to upload.</p>
+                                </div>
+                                <button type="submit" class="btn btn-success btn-block"
+                                    aria-label="Upload GTFS file">Upload</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div id="map-container">
+                    <div id="map"></div>
+                    <div id="loading-spinner" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.14.30/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.1/spin.min.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGLWo39eyy1npjX4krrBRKlV2Crxu_OOA&callback=initMap"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>

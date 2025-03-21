@@ -1,0 +1,3 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+16,MSRTC Ratnagiri Division,11,DEVRUKH SANGMESHWAR,,3,,e73d00,FFFFFF
+32,MSRTC Ratnagiri Division,12,DEVRUKH RATNAGIRI,,3,,00e73d,FFFFFF
